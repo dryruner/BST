@@ -303,6 +303,7 @@ if node wasn't constructed, you should construct/init it in this way:
 	
 	BSTree* node = (BSTree*)malloc(sizeof(BSTree));
 	node->key = value;
+	node->is_visited = false;
 	node->lchild = NULL;
 	node->rchild = NULL;
 	node->parent = NULL;
@@ -343,75 +344,10 @@ void Insert_BST(BSTree** root, uint value)
 	}
 }
 
-
-/*
-Description: given the node(you want to delete)'s pointer, delete it
-Lemma:		 if one node in BST has two children(both not NULL), then its successor has no left child && its predecessor has no right child.(It's easy to understand). This lemma is useful in the 3rd case in Delete_BST
-Time:		 O(h); h is height of BST
- */
-
-/* This version is flawed you need to improve it. And please CHECK NOTICE!! */
-/*void Delete_BST_my(BSTree* root, BSTree* node)
-{
-//	static int flag = 0;
-	if((!node->lchild && !node->rchild) && (node == root))
-	{
-		free(node);
-		node = NULL; //if BST only has a single node
-		return;
-	}
-
-//	BSTree* parent_node = node->parent;
-	if(!node->lchild)  //case1 or case2
-	{
-		if(node->parent->lchild == node)
-			node->parent->lchild = node->rchild;
-		else
-			node->parent->rchild = node->rchild;
-		free(node);
-	}
-	else if(!node->rchild)
-	{
-		if(node->parent->lchild == node)
-			node->parent->lchild = node->lchild;
-		else
-			node->parent->rchild = node->lchild;
-		free(node);
-	}
-	else // Case3: both node's left child and right child are not empty 
-	{
-		// use flag to make BST more balanced
-//		if(flag == 0) // use node's successor 
-//		{
-			BSTree* succ_node = SUCC_BST(node);// according to lemma, succ_node has no left-child, unlink succ_node first, then use succ_node's key substitute node's key, finally delete succ_node
-			if(succ_node->parent->lchild == succ_node)
-				succ_node->parent->lchild = succ_node->rchild;
-			else
-				succ_node->parent->rchild = succ_node->rchild;
-			
-			node->key = succ_node->key;
-			free(succ_node);
-//			flag = 1;	
-//		}
-//		else  // use node's predecessor
-		{
-			BSTree* pre_node = PRE_BST(node);// node's predecessor has no right child
-			BSTree* parent_pre_node = pre_node->parent;
-//			// unlink pre_node first 
-			if(parent_pre_node->lchild == pre_node)
-				parent_pre_node->lchild = pre_node->lchild;
-			else
-				parent_pre_node->rchild = pre_node->lchild;
-			
-			node->key = pre_node->key;
-			free(pre_node);
-
-			flag = 0;
-		}
-	}
-}
-*/
 /* 
+Lemma:		If one node in BST has two children(both not NULL), then its successor has no left child 
+			&& its predecessor has no right child.(It's easy to understand). This lemma is useful in 
+			the 3rd case in Delete_BST
 Notice: 	Since Insert && Delete operation changed the structure of BST, i.e. root pointer 
 			maybe points to another node, so we have to pass the reference of root(in C++)
 			or use a pointer to the root pointer!(二级指针)
@@ -446,56 +382,3 @@ BSTree* Delete_BST(BSTree** root, BSTree* node)
 	
 	return y;	
 }
-
-
-/*
-BSTree* Delete_BST(BSTree** root, BSTree* node)
-{
-	BSTree *x,*y;
-	if(!node->lchild || !node->rchild)
-		y = node;
-	else
-		y = SUCC_BST(node); // y point to the node actually be deleted and y has at most one child(lemma)
-
-	// x is y's child, or x is NULL if y is leaf node
-	if(y->lchild)
-		x = y->lchild;
-	else
-		x = y->rchild;
-	// let x->parent points to y->parent; if x is NULL, everything is done, since y must be leaf node
-	if(x)
-		x->parent = y->parent;
-	
-	if(!y->parent) // if y is root
-		(*root) = x;
-	else if(y == y->parent->lchild)
-		y->parent->lchild = x;
-	else
-		y->parent->rchild = x;
-	
-	if(y != node)  // if the actually deleted node isn't node itself
-	{
-	//	node->key = y->key;
-	//	Notice: This is not a trick of replacing key value of node and y; but is really pointer operations that unlink node and linkin y. Finally delete node.
-		y->lchild = node->lchild;
-		y->rchild = node->rchild;
-		y->parent = node->parent;
-		if(node->lchild)
-			node->lchild->parent = y;
-		if(node->rchild)
-			node->rchild->parent = y;
-		if(node->parent)
-		{
-			if(node->parent->lchild == node)
-				node->parent->lchild = y;
-			else
-				node->parent->rchild = y;
-		}
-		else
-		{
-			(*root) = y;
-		}
-	}
-	return node;
-}
-*/
