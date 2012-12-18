@@ -383,6 +383,8 @@ BSTree* Delete_BST(BSTree** root, BSTree* node)
 	return y;	
 }*/
 
+
+/* Delete without using parent pointer. Only Predecessor and Successor would require the parent pointer */
 void Delete_BST(BSTree* &Root, uint key)
 {
 	BSTree* p_root = NULL;
