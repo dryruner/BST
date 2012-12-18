@@ -25,31 +25,30 @@ int main(int argc, char* argv[])
 */
 	printf("\nPostOrder_I: \n");
 	PostOrder_Traverse_I(root);
-/*	
+	
 	printf("\nMax value in BST: %u\n",MAX_BST(root)->key);
 	printf("\nMin value in BST: %u\n",MIN_BST(root)->key);
 	uint input;
 	
-	printf("\nplease input the value you want to search: ");
+/*	printf("\nplease input the value you want to search: ");
 	scanf("%u",&input);
 	BSTree* locate;
 	locate = Search_BST_R(root,input);
 	printf("\nSearch_R %u's value: %u\n",input,locate->key);
 	locate = Search_BST_I(root,input);
 	printf("Search_I %u's value: %u\n",input,locate->key);
-
+*/
 	printf("\nplease input the value you want to delete: ");
 	scanf("%u",&input);
 	while(input != 0)
 	{
-		locate = Search_BST_I(root,input);
-		p = Delete_BST(&root,locate);
-		free(p);
+//		locate = Search_BST_I(root,input);
+		Delete_BST(root, input);
 		printf("\nAfter delete %u:\n",input);
 		InOrder_Traverse_R(root);
 		printf("\nplease input another value you want to delete: ");
 		scanf("%u",&input);
-	}*/
+	}
 	printf("\n");
 	return 0;
 }

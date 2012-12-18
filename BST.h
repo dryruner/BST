@@ -32,6 +32,6 @@ BSTree* Search_nearest_bigger(BSTree*,float);
 
 void Insert_BST(BSTree** root, uint value);
 //void Delete_BST_my(BSTree* root, BSTree* node);
-BSTree* Delete_BST(BSTree** root, BSTree* node);
-
+//BSTree* Delete_BST(BSTree** root, BSTree* node);
+void Delete_BST(BSTree* &Root, uint key);
 #endif

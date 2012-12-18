@@ -352,7 +352,7 @@ Notice: 	Since Insert && Delete operation changed the structure of BST, i.e. roo
 			maybe points to another node, so we have to pass the reference of root(in C++)
 			or use a pointer to the root pointer!(二级指针)
  */
-
+/*
 BSTree* Delete_BST(BSTree** root, BSTree* node)
 {
 	BSTree *x,*y;
@@ -381,4 +381,75 @@ BSTree* Delete_BST(BSTree** root, BSTree* node)
 		node->key = y->key; // This is a trick, see another version below
 	
 	return y;	
+}*/
+
+void Delete_BST(BSTree* &Root, uint key)
+{
+	BSTree* p_root = NULL;
+	BSTree* root = Root;
+	if(!root)
+	{
+		printf("Tree empty, delete failed!\n");
+		return;
+	}
+	while(root)
+	{
+		if(key < root->key)
+		{
+			p_root = root;
+			root = root->lchild;
+		}
+		else if(key > root->key)
+		{
+			p_root = root;
+			root = root->rchild;
+		}
+		else // find key item
+		{
+			if(!root->lchild)  //left child is empty
+			{
+				if(!p_root)
+					Root = root->rchild;
+				else{
+					if(p_root->lchild == root)
+						p_root->lchild = root->rchild;
+					else
+						p_root->rchild = root->rchild;
+				}
+				free(root);
+			}
+			else if(!root->rchild) // right child is empty and left child is non-empty
+			{
+				if(!p_root)
+					Root = root->lchild;
+				else
+				{
+					if(p_root->lchild == root)
+						p_root->lchild = root->lchild;
+					else
+						p_root->rchild = root->lchild;
+				}
+				free(root);
+			}
+			else // case 3: has 2 non-empty child
+			{
+				BSTree* p_succ = root->rchild;
+				BSTree* p_root = root;
+				while(p_succ->lchild)
+				{
+					p_root = p_succ;
+					p_succ = p_succ->lchild;
+				}
+				root->key = p_succ->key; // replace key
+				if(p_root->rchild == p_succ)
+					p_root->rchild = p_succ->rchild;
+				else
+					p_root->lchild = p_succ->rchild;
+				free(p_succ);
+			}
+			return;
+		}
+	}
+	printf("key doesn't exist, delete failed!\n");
+	return;
 }
