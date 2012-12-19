@@ -327,7 +327,7 @@ void Insert_BST(BSTree** root, uint value)
 	while(x != NULL)
 	{
 		y = x; // y is always the parent of x
-		if(node->key < x->key)
+		if(node->key <= x->key)
 			x = x->lchild;
 		else
 			x = x->rchild;
@@ -337,7 +337,7 @@ void Insert_BST(BSTree** root, uint value)
 		*root = node; 
 	else
 	{
-		if(node->key < y->key)
+		if(node->key <= y->key)
 			y->lchild = node;
 		else
 			y->rchild = node;
