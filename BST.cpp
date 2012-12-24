@@ -5,15 +5,15 @@
 
 using namespace std;
 /*            
-			  root
-			    ↓
-				15
-			  /    \
-			 6      18
-		   /  \    /  \
-		  3    7  17   20
-         / \    \
-        2   4    13
+               root
+                ↓
+                15
+               /  \
+              6    18
+             / \   / \
+            3   7 17  20
+           / \   \
+          2   4  13
                 /
                9
 
@@ -410,7 +410,7 @@ void Delete_BST(BSTree* &Root, uint key)
 		{
 			if(!root->lchild)  //left child is empty
 			{
-				if(!p_root)
+				if(!p_root) // so the node we wanna delete is Root
 					Root = root->rchild;
 				else{
 					if(p_root->lchild == root)
