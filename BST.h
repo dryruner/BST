@@ -22,7 +22,9 @@ BSTree* Search_BST_I(BSTree*, unsigned int);
 BSTree* MAX_BST(BSTree*);
 BSTree* MIN_BST(BSTree*);
 BSTree* PRE_BST(BSTree*);
+void PRE_BST(BSTree*, uint);
 BSTree* SUCC_BST(BSTree*);
+void SUCC_BST(BSTree*, uint);
 
 /* C-Version */
 BSTree* Search_nearest_bigger(BSTree*,float);

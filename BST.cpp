@@ -24,7 +24,6 @@ InOrder:
 typedef struct BSTree{
 	int key;
 	bool is_visited;
-	BSTree* parent;
 	BSTree* lchild;
 	BSTree* rchild;
 }BSTree;
@@ -208,6 +207,36 @@ BSTree* PRE_BST(BSTree* node)
 	return up;
 }
 
+/*
+   A top-down implementation of finding a key's predecessor without using parent pointer
+   It also recieves the key which actually isn't in BST, and gives the "logical" predecessor
+   of that key.
+ */
+void PRE_BST(BSTree* root, uint key)
+{
+	if(!root)
+	{
+		printf("BST empty, no predecessor for key: %u\n", key);
+		return;
+	}
+	BSTree* p_pre = NULL;
+	while(root)
+	{
+		if(root->key >= key)
+		{
+			root = root->lchild;
+		}
+		else
+		{
+			p_pre = root;
+			root = root->rchild;
+		}
+	}
+	if(!p_pre)
+		printf("%u doesn't have predecessor\n", key);
+	else
+		printf("%u's predecessor is: %u\n", key, p_pre->key);
+}
 
 /*
 Note: node shouldn't be NULL
@@ -234,6 +263,36 @@ BSTree* SUCC_BST(BSTree* node)
 	return up;
 }
 
+/* 
+   A top-down implementation of finding a key's successor without using parent pointer 
+   It also receives the key which actually isn't in BST and gives the "logical" successor
+   of that key.
+ */
+void SUCC_BST(BSTree* root, uint key)
+{
+	if(!root)
+	{
+		printf("BST empty, no successor for key: %u\n", key);
+		return;
+	}
+	BSTree* p_succ = NULL;
+	while(root)
+	{
+		if(root->key > key)
+		{
+			p_succ = root;
+			root = root->lchild;
+		}
+		else
+		{
+			root = root->rchild;
+		}
+	}
+	if(!p_succ)
+		printf("%u doesn't have successor\n", key);
+	else
+		printf("%u's successor is: %u\n", key, p_succ->key);
+}
 
 /* A helpful function in malloc lab */
 /*BSTree* Search_nearest_bigger(BSTree* root, uint value)

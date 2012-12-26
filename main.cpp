@@ -38,17 +38,24 @@ int main(int argc, char* argv[])
 	locate = Search_BST_I(root,input);
 	printf("Search_I %u's value: %u\n",input,locate->key);
 */
-	printf("\nplease input the value you want to delete: ");
-	scanf("%u",&input);
-	while(input != 0)
+/*	while(input)
 	{
-//		locate = Search_BST_I(root,input);
+		printf("\nplease input the value you want to delete: ");
+		scanf("%u",&input);
 		Delete_BST(root, input);
 		printf("\nAfter delete %u:\n",input);
 		InOrder_Traverse_R(root);
-		printf("\nplease input another value you want to delete: ");
-		scanf("%u",&input);
 	}
+*/
+	while(input)
+	{
+		printf("\nplease input the value: ");
+		scanf("%u",&input);
+		SUCC_BST(root, input);
+		PRE_BST(root, input);
+		InOrder_Traverse_R(root);
+	}
+
 	printf("\n");
 	return 0;
 }

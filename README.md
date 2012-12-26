@@ -1,4 +1,4 @@
-BST
+BST V1.0.2
 ===
 
 Binary search tree's implementation in C++(mixed with C, originally I use C to implement, but later I use C++ STL(stack) to help implement non-recursive version of PreOrder, InOrder, PostOrder traverse of BST)
@@ -8,6 +8,7 @@ Binary search tree's implementation in C++(mixed with C, originally I use C to i
 * Non-recursive version of Pre-Order and Post-Order traverse of BST
 * Return the max/min item of BST
 * Return the successor/predecessor of a given node(if exists)
+* Add the top-down implementation of SUCC_BST and PRE_BST methods, which now doesn't require the parent pointer.
 * Search the BST according to the given key
 * Insert an item in to BST(given key)
 * Delete a given node in the BST
