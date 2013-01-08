@@ -357,20 +357,9 @@ BSTree* Search_nearest_bigger(BSTree* root, float value)
 }
 
 /*
-Description: insert a node(by key value) into BST
-if node wasn't constructed, you should construct/init it in this way:
-	
-	BSTree* node = (BSTree*)malloc(sizeof(BSTree));
-	node->key = value;
-	node->is_visited = false;
-	node->lchild = NULL;
-	node->rchild = NULL;
-	node->parent = NULL;
-
-Lemma: 				the new inserted node is always the leaf node!
+Lemma: 				the new inserted node is always the leaf node
 Time complexity:	O(h); h is the height of BST
-Note:				have to return root pointer, or should modify 1st argument BSTree* root to BSTree* &root(reference is used in C++ only!)
- */
+*/
 void Insert_BST(BSTree** root, uint value)
 {
 	BSTree* node = (BSTree*)malloc(sizeof(BSTree));
@@ -402,46 +391,6 @@ void Insert_BST(BSTree** root, uint value)
 			y->rchild = node;
 	}
 }
-
-/* 
-Lemma:		If one node in BST has two children(both not NULL), then its successor has no left child 
-			&& its predecessor has no right child.(It's easy to understand). This lemma is useful in 
-			the 3rd case in Delete_BST
-Notice: 	Since Insert && Delete operation changed the structure of BST, i.e. root pointer 
-			maybe points to another node, so we have to pass the reference of root(in C++)
-			or use a pointer to the root pointer!(二级指针)
- */
-/*
-BSTree* Delete_BST(BSTree** root, BSTree* node)
-{
-	BSTree *x,*y;
-	if(!node->lchild || !node->rchild)
-		y = node;
-	else
-		y = SUCC_BST(node); // y point to the node actually be deleted and y has at most one child(lemma)
-
-	// x is y's child, or x is NULL if y is leaf node
-	if(y->lchild)
-		x = y->lchild;
-	else
-		x = y->rchild;
-	//let x->parent points to y->parent; if x is NULL, everything is done, since y must be leaf node 
-	if(x)
-		x->parent = y->parent;
-	
-	if(!y->parent) // if y is root
-		(*root) = x;
-	else if(y == y->parent->lchild)
-		y->parent->lchild = x;
-	else
-		y->parent->rchild = x;
-	
-	if(y != node)  // if the actually deleted node isn't node itself
-		node->key = y->key; // This is a trick, see another version below
-	
-	return y;	
-}*/
-
 
 /* Delete without using parent pointer. */
 void Delete_BST(BSTree* &Root, uint key)
