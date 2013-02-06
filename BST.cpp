@@ -66,6 +66,11 @@ void InOrder_Traverse_I(BSTree* root)
 	}
 }
 
+
+void InOrder_Traverse_I2(BSTree* root)
+{
+}
+
 /**
  Non-recursive version of Pre-Order traverse of BST, using C++ STL (stack) to implement
  */
@@ -92,6 +97,23 @@ void PreOrder_Traverse_I(BSTree* root)
 	}
 }
 
+/* Another implementation of non-recursive PreOrder Traverse, which doesn't require any additional field in the Node structure */
+void PreOrder_Traverse_I2(BSTree* root)
+{
+	stack<BSTree*> S;
+	S.push(root);
+	BSTree* p_cur;
+	while(!S.empty())
+	{
+		p_cur = S.top();
+		printf("%u ", p_cur->key);
+		S.pop();
+		if(p_cur->rchild)
+			S.push(p_cur->rchild);
+		if(p_cur->lchild)
+			S.push(p_cur->lchild);
+	}
+}
 
 /**
  Non-recursive version of Post-Order traverse of BST, using C++ STL (stack) to implement
@@ -114,6 +136,79 @@ void PostOrder_Traverse_I(BSTree* root)
 			p_t->is_visited = true;
 			S.pop();
 		}
+	}
+}
+
+/* 
+ Another implementation of non-recursive postorder traversal, without doing any tweaks about the Node structure.
+• Just to use p_pre pointer to keep track of the previously-traversed node and to see whether it is traversing down the tree or back up the tree.
+ */
+void PostOrder_Traverse_I2(BSTree* root)
+{
+	stack<BSTree*> S;
+	S.push(root);
+	BSTree* p_cur = NULL;
+	BSTree* p_pre = NULL;
+	while(!S.empty())
+	{
+		p_cur = S.top();
+		/* traverse down through the tree */
+		if(!p_pre || p_cur == p_pre->lchild || p_cur == p_pre->rchild)
+		{
+			if(p_cur->lchild)
+				S.push(p_cur->lchild);
+			else if(p_cur->rchild)
+				S.push(p_cur->rchild);
+			else
+			{
+				printf("%u ", p_cur->key);
+				S.pop();
+			}
+		}
+		else   // traverse back up the tree
+		{
+			if(p_cur->lchild == p_pre)
+			{
+				if(p_cur->rchild)
+					S.push(p_cur->rchild);
+				else
+				{
+					printf("%u ", p_cur->key);
+					S.pop();
+				}
+			}
+			else if(p_cur->rchild == p_pre)
+			{
+				printf("%u ", p_cur->key);
+				S.pop();
+			}
+		}
+		p_pre = p_cur;
+	}
+}
+
+/* still yet another implementation of non-recursive PostOrder Traverse, which also doesn't require any additional field in the Node structure, but it uses 2 stacks */
+void PostOrder_Traverse_I3(BSTree* root)
+{
+	stack<BSTree*> S;
+	stack<BSTree*> out;
+	S.push(root);
+	BSTree* p_cur;
+	while(!S.empty())
+	{
+		p_cur = S.top();
+		out.push(p_cur);
+		S.pop();
+		if(p_cur->lchild)
+			S.push(p_cur->lchild);
+		if(p_cur->rchild)
+			S.push(p_cur->rchild);
+	}
+	while(!out.empty())
+	{
+		p_cur = out.top();
+		printf("%u ", p_cur->key);
+		out.pop();
 	}
 }
 

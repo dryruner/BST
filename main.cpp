@@ -15,21 +15,30 @@ int main(int argc, char* argv[])
 		Insert_BST(&root,vector[i]);
 	
 /*	printf("InOrder_R: \n");
-	InOrder_Traverse_R(root);
+	InOrder_Traverse_R(root);	
 	
 	printf("\nInOrder_I: \n");
 	InOrder_Traverse_I(root);
-
-	printf("\nPreOrder_I: \n");
-	PreOrder_Traverse_I(root);
+	printf("\nInOrder_I2: \n");
+	InOrder_Traverse_I2(root);
 */
-	printf("\nPostOrder_I: \n");
-	PostOrder_Traverse_I(root);
-	
+//	printf("\nPreOrder_I: \n");
+//	PreOrder_Traverse_I(root);
+	printf("\nPreOrder_I2: \n");
+	PreOrder_Traverse_I2(root);
+
+//	printf("\nPostOrder_I: \n");
+//	PostOrder_Traverse_I(root);
+	printf("\nPostOrder_I2: \n");
+	PostOrder_Traverse_I2(root);
+	printf("\nPostOrder_I3: \n");
+	PostOrder_Traverse_I3(root);
+
+/*
 	printf("\nMax value in BST: %u\n",MAX_BST(root)->key);
 	printf("\nMin value in BST: %u\n",MIN_BST(root)->key);
 	uint input;
-	
+*/	
 /*	printf("\nplease input the value you want to search: ");
 	scanf("%u",&input);
 	BSTree* locate;
@@ -47,6 +56,7 @@ int main(int argc, char* argv[])
 		InOrder_Traverse_R(root);
 	}
 */
+/*
 	while(input)
 	{
 		printf("\nplease input the value: ");
@@ -55,7 +65,7 @@ int main(int argc, char* argv[])
 		PRE_BST(root, input);
 		InOrder_Traverse_R(root);
 	}
-
+*/
 	printf("\n");
 	return 0;
 }

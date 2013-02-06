@@ -15,7 +15,10 @@ typedef struct BSTree{
 void InOrder_Traverse_R(BSTree*);
 void InOrder_Traverse_I(BSTree* root);
 void PreOrder_Traverse_I(BSTree* root);
+void PreOrder_Traverse_I2(BSTree* root);
 void PostOrder_Traverse_I(BSTree* root);
+void PostOrder_Traverse_I2(BSTree* root);
+void PostOrder_Traverse_I3(BSTree* root);
 
 BSTree* Search_BST_R(BSTree*, unsigned int);
 BSTree* Search_BST_I(BSTree*, unsigned int);
