@@ -39,4 +39,8 @@ void Insert_BST(BSTree** root, uint value);
 //void Delete_BST_my(BSTree* root, BSTree* node);
 //BSTree* Delete_BST(BSTree** root, BSTree* node);
 void Delete_BST(BSTree* &Root, uint key);
+
+voif level_print(BSTree* root, int N);
+void zigzag_print(BSTree* root);
+void mirror_tree(BSTree* root);
 #endif

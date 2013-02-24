@@ -1,4 +1,4 @@
-BST V1.0.3
+BST V1.0.5
 ===
 
 Binary search tree's implementation in C/C++.
@@ -12,3 +12,6 @@ Binary search tree's implementation in C/C++.
 * Search the BST according to the given key
 * Insert in to BST(given key)
 * Non-recursive deletion without using parent pointer.
+* Print a binary tree level-by-level.
+* Print a binary tree in "zig-zag" way. (see zigzagprint.cpp for more detailed comments)
+* Mirroring a binary tree.
