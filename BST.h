@@ -1,3 +1,5 @@
+#include <cstdlib>
+#include <stdio.h>
 #ifndef __BSTREE__
 #define __BSTREE__
 
@@ -11,6 +13,11 @@ typedef struct BSTree{
 	struct BSTree* rchild;
 }BSTree;
 
+typedef struct Result{
+	bool find1;
+	bool find2;
+	BSTree* p_find;
+}Result;
 
 void InOrder_Traverse_R(BSTree*);
 void InOrder_Traverse_I(BSTree* root);
@@ -43,4 +50,8 @@ void Delete_BST(BSTree* &Root, uint key);
 voif level_print(BSTree* root, int N);
 void zigzag_print(BSTree* root);
 void mirror_tree(BSTree* root);
+
+BSTree* LCA(BSTree* root, uint key1, uint key2);
+Result LCACore(BSTree* root, uint key1, uint key2);
+
 #endif

@@ -1,4 +1,4 @@
-BST V1.0.5
+BST V1.0.6
 ===
 
 Binary search tree's implementation in C/C++.
@@ -15,3 +15,4 @@ Binary search tree's implementation in C/C++.
 * Print a binary tree level-by-level.
 * Print a binary tree in "zig-zag" way. (see zigzagprint.cpp for more detailed comments)
 * Mirroring a binary tree.
+* Return the Lowest Common Ancestor(LCA) of a binary tree.
