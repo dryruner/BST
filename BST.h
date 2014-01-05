@@ -21,6 +21,7 @@ typedef struct Result{
 
 void InOrder_Traverse_R(BSTree*);
 void InOrder_Traverse_I(BSTree* root);
+void InOrder_Traverse_I2(BSTree* root);
 void PreOrder_Traverse_I(BSTree* root);
 void PreOrder_Traverse_I2(BSTree* root);
 void PostOrder_Traverse_I(BSTree* root);
@@ -47,7 +48,7 @@ void Insert_BST(BSTree** root, uint value);
 //BSTree* Delete_BST(BSTree** root, BSTree* node);
 void Delete_BST(BSTree* &Root, uint key);
 
-voif level_print(BSTree* root, int N);
+void level_print(BSTree* root, int N);
 void zigzag_print(BSTree* root);
 void mirror_tree(BSTree* root);
 

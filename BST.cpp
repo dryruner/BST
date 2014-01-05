@@ -69,6 +69,21 @@ void InOrder_Traverse_I(BSTree* root)
 
 void InOrder_Traverse_I2(BSTree* root)
 {
+	stack<BSTree*> S;
+	BSTree *p_t = root;
+
+	while(!S.empty() || p_t)
+	{
+		while (p_t)
+		{
+			S.push(p_t);
+			p_t = p_t->lchild;
+		}
+		p_t = S.top();
+		printf("%u ", p_t->key);
+		S.pop();
+		p_t = p_t->rchild;
+	}
 }
 
 /**

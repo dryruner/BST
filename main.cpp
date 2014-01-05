@@ -14,21 +14,21 @@ int main(int argc, char* argv[])
 	for(i=0; i< length;i++)
 		Insert_BST(&root,vector[i]);
 	
-/*	printf("InOrder_R: \n");
+	printf("InOrder_R: \n");
 	InOrder_Traverse_R(root);	
 	
-	printf("\nInOrder_I: \n");
-	InOrder_Traverse_I(root);
+//	printf("\nInOrder_I: \n");
+//	InOrder_Traverse_I(root);
 	printf("\nInOrder_I2: \n");
 	InOrder_Traverse_I2(root);
-*/
+
 //	printf("\nPreOrder_I: \n");
 //	PreOrder_Traverse_I(root);
 	printf("\nPreOrder_I2: \n");
 	PreOrder_Traverse_I2(root);
 
-//	printf("\nPostOrder_I: \n");
-//	PostOrder_Traverse_I(root);
+	printf("\nPostOrder_I: \n");
+	PostOrder_Traverse_I(root);
 	printf("\nPostOrder_I2: \n");
 	PostOrder_Traverse_I2(root);
 	printf("\nPostOrder_I3: \n");
