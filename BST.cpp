@@ -561,7 +561,7 @@ void Delete_BST(BSTree* &Root, uint key)
 					p_succ = p_succ->lchild;
 				}
 				root->key = p_succ->key; // replace key
-				/* lemma: successor has no left child, and predecessor has no right child */
+				/* lemma: A node with 2 children, its successor has no left child, and predecessor has no right child */
 				if(p_root->rchild == p_succ)
 					p_root->rchild = p_succ->rchild;
 				else

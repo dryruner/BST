@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 	int i;
 	const int length = sizeof(vector)/sizeof(uint);
 //	BSTree* p;
-	for(i=0; i< length;i++)
+	for(i = 0; i < length;i++)
 		Insert_BST(&root,vector[i]);
 	
 	printf("InOrder_R: \n");
@@ -56,16 +56,21 @@ int main(int argc, char* argv[])
 		InOrder_Traverse_R(root);
 	}
 */
-/*
-	while(input)
+
+	level_print(root, sizeof(vector) / sizeof(uint));
+
+	uint input;
+	while(1)
 	{
 		printf("\nplease input the value: ");
 		scanf("%u",&input);
+		if (input == 0)
+			break;
 		SUCC_BST(root, input);
 		PRE_BST(root, input);
-		InOrder_Traverse_R(root);
+//		InOrder_Traverse_R(root);
 	}
-*/
+
 	printf("\n");
 	return 0;
 }
